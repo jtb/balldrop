@@ -1,3 +1,9 @@
+body
+{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size:36px;
+}
+
 .on {
   fill: pink;
   stroke: red;
@@ -6,4 +12,8 @@
 
 .tricolor {
 	stroke: black;
+}
+
+.collapse_header {
+    font-size: 48px
 }
