@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.css">
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script>
+	
+	<script src="iro.min.js"></script>
+</head>
+<body>
+
+    <div data-role="collapsible">
+        <h3>Pick Color</h3>
+        <div id="color-picker-container"></div>
+    </div>
+    <div data-role="collapsible">
+        <h3>Hexagon Slice</h3>
+		<svg class="tricolor" height="300" width="300">
+		<polygon points="150.0,3.75 115.748,63.077 184.252,63.077" class="a0"/>
+		<polygon points="112.5,68.702 78.248,128.029 146.752,128.029" class="a1"/>
+		<polygon points="115.748,66.827 184.252,66.827 150.0,126.154" class="a2"/>
+		<polygon points="187.5,68.702 153.248,128.029 221.752,128.029" class="a3"/>
+		<polygon points="75.0,133.654 40.748,192.981 109.252,192.981" class="a4"/>
+		<polygon points="78.248,131.779 146.752,131.779 112.5,191.106" class="a5"/>
+		<polygon points="150.0,133.654 115.748,192.981 184.252,192.981" class="a6"/>
+		<polygon points="153.248,131.779 221.752,131.779 187.5,191.106" class="a7"/>
+		<polygon points="225.0,133.654 190.748,192.981 259.252,192.981" class="a8"/>
+		<polygon points="37.5,198.606 3.248,257.933 71.752,257.933" class="a9"/>
+		<polygon points="40.748,196.731 109.252,196.731 75.0,256.058" class="a10"/>
+		<polygon points="112.5,198.606 78.248,257.933 146.752,257.933" class="a11"/>
+		<polygon points="115.748,196.731 184.252,196.731 150.0,256.058" class="a12"/>
+		<polygon points="187.5,198.606 153.248,257.933 221.752,257.933" class="a13"/>
+		<polygon points="190.748,196.731 259.252,196.731 225.0,256.058" class="a14" />
+		<polygon points="262.5,198.606 228.248,257.933 296.752,257.933" class="a15"/>
+	    </svg>
+    </div>
+    <div data-role="collapsible">
+        <h3>Pentagon Slice</h3>
+		<svg class="tricolor" height="300" width="300">
+		<polygon points="150.0,3.75 115.748,63.077 184.252,63.077" class="a16"/>
+		<polygon points="112.5,68.702 78.248,128.029 146.752,128.029" class="a17"/>
+		<polygon points="115.748,66.827 184.252,66.827 150.0,126.154" class="a18"/>
+		<polygon points="187.5,68.702 153.248,128.029 221.752,128.029" class="a19"/>
+		<polygon points="75.0,133.654 40.748,192.981 109.252,192.981" class="a20"/>
+		<polygon points="78.248,131.779 146.752,131.779 112.5,191.106" class="a21"/>
+		<polygon points="150.0,133.654 115.748,192.981 184.252,192.981" class="a22"/>
+		<polygon points="153.248,131.779 221.752,131.779 187.5,191.106" class="a23"/>
+		<polygon points="225.0,133.654 190.748,192.981 259.252,192.981" class="a24"/>
+		<polygon points="37.5,198.606 3.248,257.933 71.752,257.933" class="a25"/>
+		<polygon points="40.748,196.731 109.252,196.731 75.0,256.058" class="a26"/>
+		<polygon points="112.5,198.606 78.248,257.933 146.752,257.933" class="a27"/>
+		<polygon points="115.748,196.731 184.252,196.731 150.0,256.058" class="a28"/>
+		<polygon points="187.5,198.606 153.248,257.933 221.752,257.933" class="a29"/>
+		<polygon points="190.748,196.731 259.252,196.731 225.0,256.058" class="a30" />
+		<polygon points="262.5,198.606 228.248,257.933 296.752,257.933" class="a31"/>
+		</svg>
+    </div>
+
+<script type="text/javascript">
+	var params = new URLSearchParams(location.search);
+	
+	window.onload = function () {
+		for (var p of params.entries()){
+			$('.' + p[0]).css('fill', '#' + p[1]);
+		}
+	};
+	
+	
+	var demoColorPicker = new iro.ColorPicker("#color-picker-container", {
+	  // Set the size of the color picker UI
+	  width: 320,
+	  height: 320,
+	  // Set the initial color to red
+	  color: "#f00"
+	});
+	
+	var allStates = $("svg.tricolor > *");
+	
+	$(document).mousedown(function() {
+	      allStates.bind('mouseover',function(){
+			  var colorhex = demoColorPicker.color.hexString;
+			  $(this).css('fill', colorhex);
+			  var key = $(this).attr('class')
+			  params.set(key, colorhex.replace('#', ''));
+			  window.history.replaceState({}, '', `${location.pathname}?${params}`);
+	      });
+	  })
+	  .mouseup(function() {
+	    allStates.unbind('mouseover');
+	  });
+
+	  allStates.mousedown(function() {
+		  var colorhex = demoColorPicker.color.hexString;
+		  $(this).css('fill', colorhex);
+		  var key = $(this).attr('class')
+		  params.set(key, colorhex.replace('#', ''));
+		  window.history.replaceState({}, '', `${location.pathname}?${params}`);
+	  });
+	
+  
+</script>
+
+</body>
+</html>

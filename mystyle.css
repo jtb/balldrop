@@ -1,0 +1,9 @@
+.on {
+  fill: pink;
+  stroke: red;
+  stroke-width: 2;
+}
+
+.tricolor {
+	stroke: black;
+}
