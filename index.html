@@ -7,15 +7,16 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script>
 	
-	<script src="iro.js"></script>
+	<script src="iro.min.js"></script>
 </head>
 <body>
 
-    <div data-role="collapsible">
+    <div>
         <h3><p class="collapse_header">Pick Color</p></h3>
         <div id="color-picker-container"></div>
     </div>
-    <div data-role="collapsible">
+    <!--<div data-role="collapsible">-->
+	<div>
         <h3><p class="collapse_header">Hexagon Slice</p></h3>
 		<svg class="tricolor" height="600" width="600">
 		<polygon points="300.0,7.5 231.495,126.154 368.505,126.154" class="a0"/>
@@ -36,7 +37,7 @@
 		<polygon points="525.0,397.211 456.495,515.865 593.505,515.865" class="a15"/>
 	    </svg>
     </div>
-    <div data-role="collapsible">
+    <div>
         <h3><p class="collapse_header">Pentagon Slice</p></h3>
 		<svg class="tricolor" height="600" width="600">
 		<polygon points="300.0,7.5 231.495,126.154 368.505,126.154" class="a16"/>
@@ -73,11 +74,17 @@
 	  width: 640,
 	  height: 640,
 	  // Set the initial color to red
-	  color: "#f00"
+	  color: "#f00",
+		
+      markerRadius: 32,
+  	  padding: 4,
+  	  sliderMargin: 24,
+  	  sliderHeight: 72,
 	});
 	
 	var allStates = $("svg.tricolor > *");
 	
+	/*
 	$(document).mousedown(function() {
 	      allStates.bind('mouseover',function(){
 			  var colorhex = demoColorPicker.color.hexString;
@@ -90,6 +97,7 @@
 	  .mouseup(function() {
 	    allStates.unbind('mouseover');
 	  });
+	*/
 
 	  allStates.mousedown(function() {
 		  var colorhex = demoColorPicker.color.hexString;
