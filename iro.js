@@ -937,7 +937,8 @@
 
   svgGradient.prototype.getUrl = function getUrl (base) {
     var root = IS_SAFARI ? base || location.protocol + "//" + location.host + location.pathname : "";
-    var url = "url(" + root + "#" + this.el.id + ")"
+    //var url = "url(" + root + "#" + this.el.id + ")"
+    var url = "url(" + "#" + this.el.id + ")"
     alert(url);
     return url;
   };
