@@ -12,6 +12,28 @@
 	<script src="iro.js"></script>
 </head>
 <body>
+	
+      <div data-role = "page" id = "page1">
+         <div data-role = "header">
+            <h2>Header</h2>
+         </div>
+         
+         <div data-role = "main" class = "ui-content">
+            <p>Welcome to Tutorialspoint!!! Click the link to flip the page.</p>
+            <a href = "#page2" data-transition = "flip">Page Two</a>
+         </div>
+      </div>
+
+      <div data-role = "page" id = "page2">
+         <div data-role = "header">
+            <h2>Header</h2>
+         </div>
+
+         <div data-role = "main" class = "ui-content">
+            <p>Click the link to go page one.</p>
+            <a href = "#page1" data-transition = "flip" data-direction="reverse">Page One</a>
+         </div>
+
 
 <div align="center">
     <div>
@@ -62,6 +84,7 @@
 		<polygon points="262.5,198.606 228.248,257.933 296.752,257.933" class="a31"/>
 		</svg>
     </div>
+</div>
 </div>
 
 <script type="text/javascript">
