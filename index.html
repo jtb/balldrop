@@ -67,25 +67,34 @@
 <script type="text/javascript">
 	var params = new URLSearchParams(location.search);
 	
+	var demoColorPicker;
+	
 	window.onload = function () {
 		for (var p of params.entries()){
 			$('.' + p[0]).css('fill', '#' + p[1]);
 		}
+		
+		demoColorPicker = new iro.ColorPicker("#color-picker-container", {
+			  // Set the size of the color picker UI
+			  width: 320,
+			  height: 320,
+			  color: "#f00",
+			});
 	};
 	
 	
-	var demoColorPicker = new iro.ColorPicker("#color-picker-container", {
+	//var demoColorPicker = new iro.ColorPicker("#color-picker-container", {
 	  // Set the size of the color picker UI
-	  width: 320,
-	  height: 320,
+	  //width: 320,
+	  //height: 320,
 	  // Set the initial color to red
-	  color: "#f00",
+	  //color: "#f00",
 		
       //markerRadius: 32,
   	  //padding: 4,
   	  //sliderMargin: 24,
   	  //sliderHeight: 72,
-	});
+		//});
 	
 	var allStates = $("svg.tricolor > *");
 	
