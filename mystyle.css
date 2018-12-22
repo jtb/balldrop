@@ -17,3 +17,8 @@ body
 .collapse_header {
     font-size: 36px
 }
+
+.centered {
+	
+    align: "center";
+}
