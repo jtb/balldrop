@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Hello</title>
+	<title>Happy New Year!</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="mystyle.css">
 	
@@ -12,13 +12,22 @@
 	<script src="iro.min.js"></script>
 </head>
 <body>
-	
-      <div data-role = "page" id = "page1">
-         <div data-role = "header">
-            <h2>Header</h2>
-         </div>
+	<div data-role = "page" id = "page1">
+		<div data-role = "header">
+			<h2>Happy New Year!</h2>
+			<a href = "#page2" data-role="button" data-icon="edit" class="ui-btn-right" data-transition = "flip">Color Me!</a>
+			
+			
+			
+			<a href="#popupBasic" data-role="button" data-icon="info" class="ui-btn-left" data-rel="popup" data-transition="pop">Info</a>
+			<div data-role="popup" id="popupBasic">
+              <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+			  <p>The New Year Eve Ball is made of 2xxx crystal triangles.</p>
+			</div>
+			
+        </div>
          
-         <div data-role = "main" class = "ui-content">
+        <div data-role = "main" class = "ui-content">
             <p>blah blah blah</p>
             <a href = "#page2" rel="keep-params" data-transition = "flip">Page Two</a>
          </div>
@@ -26,7 +35,8 @@
 
       <div data-role = "page" id = "page2">
          <div data-role = "header">
-            <h2>Header</h2>
+            <h2>Settings</h2>
+			<a href = "#page1"  data-role="button" data-icon="back" class="ui-btn-right" data-transition = "flip" data-direction="reverse">Back</a>
          </div>
 
          <div data-role = "main" class = "ui-content">
