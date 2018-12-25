@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script>
 	
-	<script src="iro.js"></script>
+	<script src="iro.min.js"></script>
 </head>
 <body>
 	
@@ -19,8 +19,8 @@
          </div>
          
          <div data-role = "main" class = "ui-content">
-            <p>Welcome to Tutorialspoint!!! Click the link to flip the page.</p>
-            <a href = "#page2" data-transition = "flip">Page Two</a>
+            <p>blah blah blah</p>
+            <a href = "#page2" rel="keep-params" data-transition = "flip">Page Two</a>
          </div>
       </div>
 
@@ -31,7 +31,7 @@
 
          <div data-role = "main" class = "ui-content">
             <p>Click the link to go page one.</p>
-            <a href = "#page1" data-transition = "flip" data-direction="reverse">Page One</a>
+            <a href = "#page1" rel="keep-params" data-transition = "flip" data-direction="reverse">Page One</a>
          </div>
 
 
@@ -141,10 +141,20 @@
 		  $(this).css('fill', colorhex);
 		  var key = $(this).attr('class')
 		  params.set(key, colorhex.replace('#', ''));
-		  window.history.replaceState({}, '', `${location.pathname}?${params}`);
+		  //window.history.replaceState({}, '', `${location.pathname}${location.hash.split('?')[0]}?${params}`);
+		  window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
 	  });
-	
-  
+	  
+	  //$('#page1').click( function() {window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`); } );
+	 // $('#page2').click( function() {window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`); } );
+
+	  $(document).on('pagecontainershow',function(event, ui){
+		  //alert(params.size)
+		  if (Array.from(params).length > 0) {
+			  window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
+		  }
+	  });
+	  
 </script>
 
 </body>
