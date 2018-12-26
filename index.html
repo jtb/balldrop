@@ -9,10 +9,14 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-mobile/1.4.5/jquery.mobile.min.js"></script>
 	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/99/three.min.js"></script>
+	<script src="THREEx.WindowResize.js"></script>
+	
 	<script src="iro.min.js"></script>
 </head>
 <body>
 	<div data-role = "page" id = "page1">
+	  	  
 		<div data-role = "header">
 			<h2>Happy New Year!</h2>
 			<a href = "#page2" data-role="button" data-icon="edit" class="ui-btn-right" data-transition = "flip">Color Me!</a>
@@ -24,7 +28,8 @@
               <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 			  <p>The New Year Eve Ball is made of 2xxx crystal triangles.</p>
 			</div>
-			
+
+			<div id="ThreeJS"></div>
         </div>
          
         <div data-role = "main" class = "ui-content">
@@ -97,75 +102,6 @@
 </div>
 </div>
 
-<script type="text/javascript">
-	var params = new URLSearchParams(location.search);
-	
-	var demoColorPicker;
-	
-	window.onload = function () {
-		for (var p of params.entries()){
-			$('.' + p[0]).css('fill', '#' + p[1]);
-		}
-		
-		demoColorPicker = new iro.ColorPicker("#color-picker-container", {
-			  // Set the size of the color picker UI
-			  width: 320,
-			  height: 320,
-			  color: "#f00",
-			});
-	};
-	
-	
-	//var demoColorPicker = new iro.ColorPicker("#color-picker-container", {
-	  // Set the size of the color picker UI
-	  //width: 320,
-	  //height: 320,
-	  // Set the initial color to red
-	  //color: "#f00",
-		
-      //markerRadius: 32,
-  	  //padding: 4,
-  	  //sliderMargin: 24,
-  	  //sliderHeight: 72,
-		//});
-	
-	var allStates = $("svg.tricolor > *");
-	
-	/*
-	$(document).mousedown(function() {
-	      allStates.bind('mouseover',function(){
-			  var colorhex = demoColorPicker.color.hexString;
-			  $(this).css('fill', colorhex);
-			  var key = $(this).attr('class')
-			  params.set(key, colorhex.replace('#', ''));
-			  window.history.replaceState({}, '', `${location.pathname}?${params}`);
-	      });
-	  })
-	  .mouseup(function() {
-	    allStates.unbind('mouseover');
-	  });
-	*/
-
-	  allStates.on('click touchstart', function () {
-		  var colorhex = demoColorPicker.color.hexString;
-		  $(this).css('fill', colorhex);
-		  var key = $(this).attr('class')
-		  params.set(key, colorhex.replace('#', ''));
-		  //window.history.replaceState({}, '', `${location.pathname}${location.hash.split('?')[0]}?${params}`);
-		  window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
-	  });
-	  
-	  //$('#page1').click( function() {window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`); } );
-	 // $('#page2').click( function() {window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`); } );
-
-	  $(document).on('pagecontainershow',function(event, ui){
-		  //alert(params.size)
-		  if (Array.from(params).length > 0) {
-			  window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
-		  }
-	  });
-	  
-</script>
-
+<script src="balldrop.js"></script>
 </body>
 </html>
