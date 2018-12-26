@@ -3,6 +3,15 @@ var demoColorPicker;
 var container;
 var camera, scene, renderer;
 var cube;
+var controls;
+
+var mouseUp = 1;
+document.body.onmousedown = function() {
+    mouseUp = 0;
+}
+document.body.onmouseup = function() {
+    mouseUp = 1;
+}
 
 window.onload = function () {
 	for (var p of params.entries()){
@@ -46,6 +55,10 @@ function init() {
                 1000 /* far plane*/
         );
         camera.position.z = 5;
+		
+		controls = new THREE.TrackballControls( camera );
+		controls.noPan = true;
+		controls.noZoom = true;
 
         // create the Scene                                                                                                                                                                  
         scene = new THREE.Scene();
@@ -69,14 +82,21 @@ function init() {
 }
 
 function animate() {
-        // relaunch the 'timer'                                                                                                                                                              
-        requestAnimationFrame( animate );
-        // render the 3D scene                                                                                                                                                               
-        render();
+    controls.update();
+        
+    // render the 3D scene
+	requestAnimationFrame( animate );
+    if (mouseUp) {
+		  //group.rotation.x += 0.0013;                                             
+		  cube.rotation.y += 0.003;
+	}                                                                                                                                                              
+	
+	render();
 }
 
 function render() {
         renderer.render( scene, camera );
 }
+
 
   
