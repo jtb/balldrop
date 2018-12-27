@@ -62,10 +62,10 @@ allStates.on('click touchstart', function () {
 });
 
 $(document).on('pagecontainershow',function(event, ui){
-	screwYouFacebook()
-	//if (Array.from(params).length > 0) {
-	//	window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
-	//}
+	//screwYouFacebook()
+	if (Array.from(params).length > 0) {
+		window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
+	}
 });
   
 function init() {
@@ -93,8 +93,8 @@ function init() {
         //cube.position.y = 150;                                                                                                                                                             
 
         // Add dome to the scene.                                                             
-		//addStarField();
-		//scene.add( starField );                                                              
+		addStarField();
+		scene.add( starField );                                                              
         scene.add( group );
 
         // init the WebGL renderer and append it to the DOM                                                                                                                                  
@@ -323,12 +323,17 @@ function updateColors() {
 }
 
 function screwYouFacebook() {
-	params.delete("fbclid");
-	if (Array.from(params).length > 0) {
-		window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
-	} else {
-		window.history.replaceState({}, '', `${location.pathname}${location.hash}`);
-	}
+	//window.location = "https://www.google.com/";
+	if (params.get("fbclid")) {
+	  params.delete("fbclid");
+	  if (Array.from(params).length > 0) {
+	  	window.location = window.location.pathname + "?" + window.location.params + window.location.hash;
+	  	//window.history.pushState({}, '', `${location.pathname}?${params}${location.hash}`);
+	  } else {
+	  	//window.history.pushState({}, '', `${location.pathname}${location.hash}`);
+	  	window.location = window.location.pathname + window.location.hash;
+	  }
+    }
 }
 
 function addStarField() {
