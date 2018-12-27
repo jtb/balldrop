@@ -63,7 +63,9 @@ allStates.on('click touchstart', function () {
 
 $(document).on('pagecontainershow',function(event, ui){
 	//screwYouFacebook()
-	if (Array.from(params).length > 0) {
+	var pageId = $('body').pagecontainer('getActivePage').prop('id'); 
+	//alert(pageId);
+	if (pageId == "page1" && Array.from(params).length > 0) {
 		window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
 	}
 });
