@@ -62,9 +62,9 @@ allStates.on('click touchstart', function () {
 
 $(document).on('pagecontainershow',function(event, ui){
 	screwYouFacebook()
-	if (Array.from(params).length > 0) {
-		window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
-	}
+	//if (Array.from(params).length > 0) {
+	//	window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
+	//}
 });
   
 function init() {
@@ -321,8 +321,7 @@ function updateColors() {
 
 function screwYouFacebook() {
 	params.delete("fbclid");
-	if (params.length > 0) {
-		//history.replaceState({}, document.title, '?' + params + location.hash)
+	if (Array.from(params).length > 0) {
 		window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
 	} else {
 		window.history.replaceState({}, '', `${location.pathname}${location.hash}`);
