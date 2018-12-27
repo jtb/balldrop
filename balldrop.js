@@ -61,14 +61,22 @@ allStates.on('click touchstart', function () {
 	updateColors();
 });
 
-$(document).on('pagecontainershow',function(event, ui){
+
+$(document).on('pagecontainerhide',function(event, ui){
+	//alert("" + ui.nextPage)
 	//screwYouFacebook()
 	var pageId = $('body').pagecontainer('getActivePage').prop('id'); 
 	//alert(pageId);
 	if (pageId == "page1" && Array.from(params).length > 0) {
 		window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
+		//window.location = window.location.pathname + "?" + params + window.location.hash;
+	}
+	if (pageId == "page2") {
+		window.history.replaceState({}, '', `${location.pathname}${location.hash}`);
+		//window.location = window.location.pathname + "?" + params + window.location.hash;
 	}
 });
+
   
 function init() {
         // Create the camera                                                                                                                                                                 
