@@ -10,6 +10,7 @@ var colors = {};
 
 var group;
 var geometry2;
+var starField;
 
 var mouseUp = 1;
 document.body.onmousedown = function() {
@@ -91,7 +92,9 @@ function init() {
         //cube = new THREE.Mesh( new THREE.CubeGeometry( 1,1,1 ), new THREE.MeshNormalMaterial() );
         //cube.position.y = 150;                                                                                                                                                             
 
-        // Add dome to the scene.                                                                                                                                                            
+        // Add dome to the scene.                                                             
+		addStarField();
+		scene.add( starField );                                                              
         scene.add( group );
 
         // init the WebGL renderer and append it to the DOM                                                                                                                                  
@@ -326,6 +329,27 @@ function screwYouFacebook() {
 	} else {
 		window.history.replaceState({}, '', `${location.pathname}${location.hash}`);
 	}
+}
+
+function addStarField() {
+	var tex = new THREE.TextureLoader().load("https://threejs.org/examples/textures/sprites/disc.png");
+	var starsGeometry = new THREE.Geometry();
+
+	for ( var i = 0; i < 10000; i ++ ) {
+
+		var star = new THREE.Vector3();
+		star.x = THREE.Math.randFloatSpread( 1000 );
+		star.y = THREE.Math.randFloatSpread( 1000 );
+		star.z = THREE.Math.randFloatSpread( -5000);
+
+		starsGeometry.vertices.push( star );
+
+	}
+
+	var starsMaterial = new THREE.PointsMaterial( { color: 0xfdffcc, size: 3.0, map: tex, alphaTest: 0.5, transparent: true } );
+
+	starField = new THREE.Points( starsGeometry, starsMaterial );
+	
 }
 
 
