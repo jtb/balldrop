@@ -22,8 +22,8 @@ document.body.onmouseup = function() {
 }
 
 window.onload = function () {
-	origURL = window.location;
-	alert(origURL)
+	origURL = window.location.href;
+	//alert(origURL)
 	screwYouFacebook();
 	
 	for (i = 0; i < 16; i++) {
@@ -76,8 +76,8 @@ $(document).on('pagecontainerhide',function(event, ui){
 	}
 	if (pageId == "page2") {
 		//window.history.replaceState({}, '', `${location.pathname}${location.hash}`);
-		window.history.replaceState({}, '', origURL)
-		alert(origURL)
+		window.history.replaceState({}, '', origURL + window.location.hash)
+		//alert(origURL)
 		//window.location = window.location.pathname + "?" + params + window.location.hash;
 	}
 });
