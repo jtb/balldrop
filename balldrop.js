@@ -93,8 +93,8 @@ function init() {
         //cube.position.y = 150;                                                                                                                                                             
 
         // Add dome to the scene.                                                             
-		addStarField();
-		scene.add( starField );                                                              
+		//addStarField();
+		//scene.add( starField );                                                              
         scene.add( group );
 
         // init the WebGL renderer and append it to the DOM                                                                                                                                  
