@@ -327,7 +327,7 @@ function screwYouFacebook() {
 	if (params.get("fbclid")) {
 	  params.delete("fbclid");
 	  if (Array.from(params).length > 0) {
-	  	window.location = window.location.pathname + "?" + window.location.params + window.location.hash;
+	  	window.location = window.location.pathname + "?" + params + window.location.hash;
 	  	//window.history.pushState({}, '', `${location.pathname}?${params}${location.hash}`);
 	  } else {
 	  	//window.history.pushState({}, '', `${location.pathname}${location.hash}`);
