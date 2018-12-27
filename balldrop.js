@@ -1,4 +1,5 @@
 var params = new URLSearchParams(location.search);
+var origURL;
 var demoColorPicker;
 var container;
 var camera, scene, renderer;
@@ -21,6 +22,8 @@ document.body.onmouseup = function() {
 }
 
 window.onload = function () {
+	origURL = window.location;
+	alert(origURL)
 	screwYouFacebook();
 	
 	for (i = 0; i < 16; i++) {
@@ -72,7 +75,9 @@ $(document).on('pagecontainerhide',function(event, ui){
 		//window.location = window.location.pathname + "?" + params + window.location.hash;
 	}
 	if (pageId == "page2") {
-		window.history.replaceState({}, '', `${location.pathname}${location.hash}`);
+		//window.history.replaceState({}, '', `${location.pathname}${location.hash}`);
+		window.history.replaceState({}, '', origURL)
+		alert(origURL)
 		//window.location = window.location.pathname + "?" + params + window.location.hash;
 	}
 });
