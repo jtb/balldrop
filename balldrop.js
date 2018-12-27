@@ -20,6 +20,8 @@ document.body.onmouseup = function() {
 }
 
 window.onload = function () {
+	screwYouFacebook();
+	
 	for (i = 0; i < 16; i++) {
 		$('.a' + i).css('fill', '#ffffff');
 		colors["a" + i] = "0xffffff";
@@ -59,6 +61,7 @@ allStates.on('click touchstart', function () {
 });
 
 $(document).on('pagecontainershow',function(event, ui){
+	screwYouFacebook()
 	if (Array.from(params).length > 0) {
 		window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
 	}
@@ -314,6 +317,16 @@ function updateColors() {
 		geometry2.faces[i*144 + 143].color.setHex(colors["a16"]);
 	}
 	geometry2.elementsNeedUpdate = true;
+}
+
+function screwYouFacebook() {
+	params.delete("fbclid");
+	if (params.length > 0) {
+		//history.replaceState({}, document.title, '?' + params + location.hash)
+		window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
+	} else {
+		window.history.replaceState({}, '', `${location.pathname}${location.hash}`);
+	}
 }
 
 
