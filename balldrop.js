@@ -57,7 +57,7 @@ allStates.on('click touchstart', function () {
 	var key = $(this).attr('class')
 	colors[key] = colorhex.replace('#', '0x');
 	params.set(key, colorhex.replace('#', ''));
-	window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
+	//window.history.replaceState({}, '', `${location.pathname}?${params}${location.hash}`);
 	updateColors();
 });
 
